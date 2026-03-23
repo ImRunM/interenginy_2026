@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>Classificació - Inter-Enginy Challenge</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #007DC2; /* Blau UPC */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem 0;
+            overflow-x: auto;
+            position: relative; /* Necessari per col·locar els logos absoluts */
+        }
+
+        /* ----- LOGOS ----- */
+        .main-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+        .sponsor-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 3px solid #ffcc00;
+            padding-bottom: 10px;
+        }
+
+        /* ----- QUADRE DEL TORNEIG (Layout Simètric) ----- */
+        .tournament-bracket {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 3.5rem; 
+            width: 98%;
+            max-width: 1600px;
+        }
+
+        /* Columnes laterals (Rondes) */
+        .round {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            min-height: 650px; 
+            gap: 15px;
+        }
+
+        /* Columna Central (Final i Campió) */
+        .center-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            min-height: 650px;
+        }
+
+        .round-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffcc00; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        /* Caixa de cada enfrontament */
+        .matchup {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+            position: relative; 
+        }
+
+        /* FLETXES CAP A LA DRETA (Banda Esquerra) */
+        .has-arrow-right::after {
+            content: '➔';
+            position: absolute;
+            right: -2.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffcc00;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            pointer-events: none;
+        }
+
+        /* FLETXES CAP A L'ESQUERRA (Banda Dreta) */
+        .has-arrow-left::before {
+            content: '➔';
+            position: absolute;
+            left: -2.8rem;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+            color: #ffcc00;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            pointer-events: none;
+        }
+
+        /* Etiqueta de quin partit és (Xapa groga) */
+        .match-badge {
+            background-color: #ffcc00;
+            color: #003366;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Disseny de la casella de l'equip */
+        .team {
+            background-color: white;
+            color: #007DC2;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            width: 190px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            cursor: text;
+            transition: transform 0.2s, background-color 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .team:hover, .team:focus {
+            outline: none;
+            border: 2px dashed #ffcc00;
+            transform: scale(1.02);
+        }
+
+        .team.pending {
+            color: #999;
+            font-weight: normal;
+        }
+
+        /* Estils especials per a la Final i el Campió */
+        .matchup.final-match {
+            background: rgba(255, 204, 0, 0.2);
+            border: 2px solid #ffcc00;
+            width: 240px;
+            align-items: center;
+        }
+
+        .team.finalist {
+            width: 210px;
+        }
+
+        .team.champion {
+            background-color: #ffcc00;
+            color: #333;
+            font-size: 1.8rem;
+            padding: 20px 25px;
+            width: 250px;
+            text-transform: uppercase;
+            border: 4px solid white;
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.7);
+        }
+
+    </style>
+</head>
+<body>
+
+    <img src="logo_eseiaat_blanc.png" alt="Logo UPC" class="main-logo" onerror="this.style.display='none'">
+    <img src="logo_eic_negre.jpg" alt="Logo Patrocinador" class="sponsor-logo" onerror="this.style.display='none'">
+
+    <h1>🏆 Classificació Inter-Enginy Challenge 2026 - ESEIAAT</h1>
+
+    <div class="tournament-bracket">
+        
+        <div class="round">
+            <div class="matchup has-arrow-right">
+                <div class="match-badge">Partit 1</div>
+                <div class="team" contenteditable="true">Equip 1</div>
+                <div class="team" contenteditable="true">Equip 2</div>
+            </div>
+            
+            <div class="matchup has-arrow-right">
+                <div class="match-badge">Partit 2</div>
+                <div class="team" contenteditable="true">Equip 3</div>
+                <div class="team" contenteditable="true">Equip 4</div>
+            </div>
+        </div>
+
+        <div class="round">
+            <div class="matchup has-arrow-right">
+                <div class="match-badge">Grup A</div>
+                <div class="team pending" contenteditable="true">Guanyador P1</div>
+                <div class="team pending" contenteditable="true">Guanyador P2</div>
+            </div>
+        </div>
+
+        <div class="center-column">
+            <div>
+                <div class="round-title">La Gran Final</div>
+                <div class="matchup final-match">
+                    <div class="match-badge">🏆 Lluita pel títol</div>
+                    <div class="team finalist pending" contenteditable="true">Finalista Esquerra</div>
+                    <div class="team finalist pending" contenteditable="true">Finalista Dreta</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="round-title" style="font-size: 2rem;">Campió Absolut</div>
+                <div class="matchup" style="background: none; box-shadow: none;">
+                    <div class="team champion pending" contenteditable="true">???</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="round">
+            <div class="matchup has-arrow-left">
+                <div class="match-badge">Grup B</div>
+                <div class="team pending" contenteditable="true">Guanyador P3</div>
+                <div class="team pending" contenteditable="true">Guanyador P4</div>
+            </div>
+        </div>
+
+        <div class="round">
+            <div class="matchup has-arrow-left">
+                <div class="match-badge">Partit 3</div>
+                <div class="team" contenteditable="true">Equip 5</div>
+                <div class="team" contenteditable="true">Equip 6</div>
+            </div>
+            
+            <div class="matchup has-arrow-left">
+                <div class="match-badge">Partit 4</div>
+                <div class="team" contenteditable="true">Equip 7</div>
+                <div class="team" contenteditable="true">Equip 8</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
