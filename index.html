@@ -54,7 +54,7 @@
             display: flex;
             align-items: stretch;
             justify-content: center;
-            gap: 3.5rem; 
+            gap: 3.5rem; /* Espai per a les fletxes */
             width: 98%;
             max-width: 1600px;
         }
@@ -142,7 +142,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* Disseny de la casella de l'equip */
+        /* Disseny de la casella de l'equip (ARA ESTÀTIC I BLOQUEJAT) */
         .team {
             background-color: white;
             color: #007DC2;
@@ -153,16 +153,11 @@
             width: 190px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            cursor: text;
-            transition: transform 0.2s, background-color 0.2s;
-            border: 2px solid transparent;
+            border: 2px solid transparent; /* Mantenim per consistència visual, però sense canvis en hover */
+            cursor: default; /* Indiquem que no és editable */
         }
 
-        .team:hover, .team:focus {
-            outline: none;
-            border: 2px dashed #ffcc00;
-            transform: scale(1.02);
-        }
+        /* S'han eliminat els estils de .team:hover i .team:focus */
 
         .team.pending {
             color: #999;
@@ -206,22 +201,22 @@
         <div class="round">
             <div class="matchup has-arrow-right">
                 <div class="match-badge">Partit 1</div>
-                <div class="team" contenteditable="true">Equip 1</div>
-                <div class="team" contenteditable="true">Equip 2</div>
+                <div class="team">Equip 1</div>
+                <div class="team">Equip 2</div>
             </div>
             
             <div class="matchup has-arrow-right">
                 <div class="match-badge">Partit 2</div>
-                <div class="team" contenteditable="true">Equip 3</div>
-                <div class="team" contenteditable="true">Equip 4</div>
+                <div class="team">Equip 3</div>
+                <div class="team">Equip 4</div>
             </div>
         </div>
 
         <div class="round">
             <div class="matchup has-arrow-right">
                 <div class="match-badge">Grup A</div>
-                <div class="team pending" contenteditable="true">Guanyador P1</div>
-                <div class="team pending" contenteditable="true">Guanyador P2</div>
+                <div class="team pending">Guanyador P1</div>
+                <div class="team pending">Guanyador P2</div>
             </div>
         </div>
 
@@ -230,15 +225,15 @@
                 <div class="round-title">La Gran Final</div>
                 <div class="matchup final-match">
                     <div class="match-badge">🏆 Lluita pel títol</div>
-                    <div class="team finalist pending" contenteditable="true">Finalista Esquerra</div>
-                    <div class="team finalist pending" contenteditable="true">Finalista Dreta</div>
+                    <div class="team finalist pending">Finalista Esquerra</div>
+                    <div class="team finalist pending">Finalista Dreta</div>
                 </div>
             </div>
 
             <div>
                 <div class="round-title" style="font-size: 2rem;">Campió Absolut</div>
                 <div class="matchup" style="background: none; box-shadow: none;">
-                    <div class="team champion pending" contenteditable="true">???</div>
+                    <div class="team champion pending">???</div>
                 </div>
             </div>
         </div>
@@ -246,22 +241,22 @@
         <div class="round">
             <div class="matchup has-arrow-left">
                 <div class="match-badge">Grup B</div>
-                <div class="team pending" contenteditable="true">Guanyador P3</div>
-                <div class="team pending" contenteditable="true">Guanyador P4</div>
+                <div class="team pending">Guanyador P3</div>
+                <div class="team pending">Guanyador P4</div>
             </div>
         </div>
 
         <div class="round">
             <div class="matchup has-arrow-left">
                 <div class="match-badge">Partit 3</div>
-                <div class="team" contenteditable="true">Equip 5</div>
-                <div class="team" contenteditable="true">Equip 6</div>
+                <div class="team">Equip 5</div>
+                <div class="team">Equip 6</div>
             </div>
             
             <div class="matchup has-arrow-left">
                 <div class="match-badge">Partit 4</div>
-                <div class="team" contenteditable="true">Equip 7</div>
-                <div class="team" contenteditable="true">Equip 8</div>
+                <div class="team">Equip 7</div>
+                <div class="team">Equip 8</div>
             </div>
         </div>
 
