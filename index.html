@@ -142,23 +142,22 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* Disseny de la casella de l'equip (ARA ESTÀTIC I BLOQUEJAT) */
+        /* Disseny de la casella de l'equip */
         .team {
             background-color: white;
-            color: #007DC2;
+            color: #007DC2; /* Color Blau Original */
             padding: 12px 15px;
             border-radius: 8px;
             font-size: 1.2rem;
-            font-weight: bold;
+            font-weight: bold; /* Negreta original */
             width: 190px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            border: 2px solid transparent; /* Mantenim per consistència visual, però sense canvis en hover */
-            cursor: default; /* Indiquem que no és editable */
+            border: 2px solid transparent; 
+            cursor: default; 
         }
 
-        /* S'han eliminat els estils de .team:hover i .team:focus */
-
+        /* Classe per als equips que encara no sabem qui són (Gris) */
         .team.pending {
             color: #999;
             font-weight: normal;
@@ -215,7 +214,7 @@
         <div class="round">
             <div class="matchup has-arrow-right">
                 <div class="match-badge">Grup A</div>
-                <div class="team pending">Tru</div>
+                <div class="team">Tru</div>
                 <div class="team pending">Guanyador P2</div>
             </div>
         </div>
