@@ -60,7 +60,7 @@ h1 {
 .round2 {
     flex-direction: column;
     align-self: center;
-    transform: translateY(-46px);
+    transform: translateY(-90px);
 }
 
 /* CENTRE */
@@ -68,7 +68,13 @@ h1 {
     flex-direction: column;
     justify-content: center;
     padding-top: 80px; 
-    transform: translateY(+70px)
+    transform: translateY(+88px)
+}
+.grand-final {
+	background: linear-gradient(135deg, #ffcc00, #ff9900);
+	border: 3px solid #ffffff;
+	transform: scale(1.1);
+	box-shadow: 0 0 20px rgba(255, 204, 0, 0.7);
 }
 
 /* TITOLS */
@@ -153,7 +159,21 @@ h1 {
     border: 2px solid #ffcc00;
     align-items: center;
 }
+.grand-final .team {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
 
+.grand-final .match-badge {
+    font-size: 1.1rem;
+    background: #ffffff;
+    color: #ff9900;
+}
+	
+.grand-title {
+	margin-top: 40px;
+    margin-bottom: 25px;
+}
 /* RESULTAT */
 .result-container {
     display: flex;
@@ -205,28 +225,26 @@ h1 {
     <!-- CENTRE -->
     <div class="center-column">
         <div>
-            <div class="round-title">Fase Final</div>
+            <div class="round-title" style="font-size:1.5rem; color:#ffffff;">Classificació per la Final</div>
             <div class="matchup final-match">
-                <div class="match-badge">Classificació</div>
                 <div class="team pending">Finalista1</div>
                 <div class="team pending">Finalista2</div>
             </div>
         </div>
 
         <div>
-            <div class="round-title">Gran Final</div>
-            <div class="matchup final-match">
-                <div class="match-badge">Duel Final</div>
+            <div class="round-title grand-title" style="font-size:2.2rem;">GRAN FINAL!</div>
+            <div class="matchup final-match grand-final">
                 <div class="team pending">Membre 1</div>
                 <div class="team pending">Membre 2</div>
             </div>
         </div>
 
         <div>
-            <div class="round-title" style="font-size:2rem;">Resultat Final</div>
+            <div class="round-title grand-title" style="font-size:2rem; color:#ffffff;">Resultat Final</div>
             <div class="result-container">
-                <div class="team champion pending">🥇 Primer premi</div>
-                <div class="team champion pending">🥈 Segon premi</div>
+                <div class="team champion pending">Primer premi</div>
+                <div class="team champion pending">Segon premi</div>
             </div>
         </div>
 
