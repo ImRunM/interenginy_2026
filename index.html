@@ -106,28 +106,6 @@ h1 {
     position: relative;
 }
 
-
-
-.group-right::after {
-    content: '➔';
-    position: absolute;
-    right: -2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    color: #ffcc00;
-}
-
-.group-left::before {
-    content: '➔';
-    position: absolute;
-    left: -2.5rem;
-    top: 50%;
-    transform: translateY(-50%) rotate(180deg);
-    font-size: 2rem;
-    color: #ffcc00;
-}
-
 /* BADGE */
 .match-badge {
     background: #ffcc00;
@@ -201,13 +179,13 @@ h1 {
 
     <!-- ESQUERRA -->
     <div class="round">
-        <div class="matchup group-right">
+        <div class="matchup">
             <div class="match-badge">Partit 1</div>
             <div class="team">Equip1</div>
             <div class="team">Equip2</div>
         </div>
 
-        <div class="matchup group-right">
+        <div class="matchup">
             <div class="match-badge">Partit 2</div>
             <div class="team">Equip3</div>
             <div class="team">Equip4</div>
@@ -216,7 +194,7 @@ h1 {
 
     <div class="round2">
 	<div class="round-title" style="font-size:2rem;">Grup A</div>
-        <div class="matchup1 group-right">
+        <div class="matchup1">
             <div class="team pending">GuanyadorP1</div>
             <div class="team pending">GuanyadorP2</div>
         </div>
@@ -253,20 +231,20 @@ h1 {
     <!-- DRETA -->
     <div class="round2">
 	<div class="round-title" style="font-size:2rem;">Grup B</div>
-        <div class="matchup1 group-left">
+        <div class="matchup1">
             <div class="team pending">GuanyadorP3</div>
             <div class="team pending">GuanyadorP4</div>
         </div>
     </div>
 
     <div class="round">
-        <div class="matchup group-left">
+        <div class="matchup">
             <div class="match-badge">Partit 3</div>
             <div class="team">Equip5</div>
             <div class="team">Equip6</div>
         </div>
 
-        <div class="matchup group-left">
+        <div class="matchup">
             <div class="match-badge">Partit 4</div>
             <div class="team">Equip7</div>
             <div class="team">Equip8</div>
