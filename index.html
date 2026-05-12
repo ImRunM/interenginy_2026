@@ -2,247 +2,355 @@
 <html lang="ca">
 <head>
 <meta charset="UTF-8">
-<!-- Correcció: initial-scale en lloc de initial-width perquè el mòbil ho llegeixi bé -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classificació - Inter-Enginy Challenge</title>
 
 <style>
-    /* VARIABLES DE COLOR PER FACILITAR CANVIS */
-    :root {
-        --upc-blue: #007DC2;
-        --upc-yellow: #ffcc00;
-        --upc-orange: #ff9900;
-        --card-bg: rgba(255, 255, 255, 0.15);
-    }
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #007DC2;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+}
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+/* LOGOS */
+.main-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-height: 100px;
+}
 
-    body {
-        font-family: 'Segoe UI', system-ui, sans-serif;
-        background-color: var(--upc-blue);
-        color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 3rem;
-    }
+.sponsor-logo-left {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    max-height: 100px;
+}
+.sponsor-logo-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-height: 80px;
+}
 
-    /* HEADER AMB ELS LOGOS */
-    .logos-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 15px 20px;
-        background-color: rgba(0, 0, 0, 0.2);
-        margin-bottom: 20px;
-    }
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem; 
+    text-align: center;
+    border-bottom: 3px solid #ffcc00;
+    transform: translateY(+40px);
+}
 
-    .main-logo { max-height: 40px; }
-    .sponsor-logo { max-height: 40px; border-radius: 4px; }
+/* TORNEIG */
+.tournament-bracket {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    width: 95%;
+}
 
-    /* TÍTOL PRINCIPAL */
-    h1 {
-        font-size: 1.8rem;
-        text-align: center;
-        margin: 0 15px 30px 15px;
-        padding-bottom: 10px;
-        border-bottom: 3px solid var(--upc-yellow);
-        line-height: 1.3;
-    }
+/* COLUMNES */
+.round {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    justify-content: space-around;
+    gap: 1.5rem;
+    transform: translateY(+90px);
+}
 
-    /* ESTRUCTURA DEL TORNEIG (VERTICAL) */
-    .tournament-container {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        max-width: 400px; /* Limitem l'amplada màxima en cas que ho obrin en PC */
-        gap: 2.5rem;
-    }
+.round2 {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    transform: translateY(-105px);
+}
 
-    .stage {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+/* CENTRE */
+.center-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px; 
+    transform: translateY(+88px);
+}
+.grand-final {
+    background: linear-gradient(135deg, #ffcc00, #ff9900);
+    border: 3px solid #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.7);
+}
 
-    .stage-title {
-        text-align: center;
-        color: var(--upc-yellow);
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+/* TITOLS */
+.round-title {
+    text-align: center;
+    color: #ffcc00;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
 
-    /* PARTITS */
-    .matchup {
-        background: var(--card-bg);
-        border-radius: 12px;
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
+/* MATCH */
+.matchup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    padding: 12px;
+    border-radius: 12px;
+    position: relative;
+}
 
-    .match-badge {
-        background: var(--upc-yellow);
-        color: #003366;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 0.85rem;
-        font-weight: bold;
-        align-self: flex-start;
-        margin-bottom: 5px;
-    }
+.matchup1 {
+    display: flex;
+    flex-direction: column;
+    gap: 136px;
+    background: rgba(255,255,255,0.1);
+    padding: 12px;
+    border-radius: 12px;
+    position: relative;
+}
 
-    /* EQUIPS */
-    .team {
-        background: white;
-        color: var(--upc-blue);
-        padding: 12px;
-        border-radius: 8px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.1rem;
-    }
+/* BADGE */
+.match-badge {
+    background: #ffcc00;
+    color: #003366;
+    padding: 4px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
 
-    .team.pending {
-        color: #888;
-        font-weight: normal;
-        background: #f0f0f0;
-    }
+/* EQUIPS */
+.team {
+    background: white;
+    color: #007DC2;
+    padding: 12px;
+    border-radius: 8px;
+    width: 190px;
+    text-align: center;
+    font-weight: bold;
+}
 
-    /* DESTACATS PER LA FINAL */
-    .stage.finals .matchup {
-        background: rgba(255, 204, 0, 0.15);
-        border: 2px solid var(--upc-yellow);
-    }
+.team.pending {
+    color: #999;
+    font-weight: normal;
+}
 
-    .stage.grand-final .matchup {
-        background: linear-gradient(135deg, var(--upc-yellow), var(--upc-orange));
-        border: 2px solid white;
-        box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
-    }
+/* FINALS */
+.matchup.final-match {
+    background: rgba(255,204,0,0.2);
+    border: 2px solid #ffcc00;
+    align-items: center;
+}
+.grand-final .team {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
 
-    .stage.grand-final .match-badge {
-        background: white;
-        color: var(--upc-orange);
-    }
+.grand-final .match-badge {
+    font-size: 1.1rem;
+    background: #ffffff;
+    color: #ff9900;
+}
+    
+.grand-title {
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+/* RESULTAT */
+.result-container {
+    display: flex;
+    gap: 20px;
+}
 
-    /* RESULTATS FINALS */
-    .results {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+.team.champion {
+    background: #ffcc00;
+    color: #333;
+    font-size: 1.2rem;
+    padding: 15px;
+    width: 200px;
+}
 
-    .champion {
-        background: var(--upc-yellow);
-        color: #333;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.1rem;
-    }
+/* ----- ESTILS NOUS (Desplegables i Edició) ----- */
+.team.double-team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5px; /* Ajustat per encabir els desplegables a 190px */
+    box-sizing: border-box;
+}
+
+.team-sel {
+    background: transparent;
+    color: inherit;
+    border: 1px solid rgba(0, 125, 194, 0.3);
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.75rem; /* Ajustat per mòbil */
+    width: 44%; /* Mida ideal perquè els dos entrin bé */
+    padding: 4px 2px;
+    cursor: pointer;
+    outline: none;
+    text-overflow: ellipsis;
+}
+
+.team-sel option {
+    color: #333;
+}
+
+.team.pending .team-sel {
+    border-color: rgba(153, 153, 153, 0.3);
+}
+
+.plus {
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.team.single-team[contenteditable="true"]:hover {
+    background-color: #f0f8ff;
+    cursor: text;
+}
+.team.single-team[contenteditable="true"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #ffcc00;
+}
 </style>
 </head>
+
 <body>
 
-    <!-- Capçalera amb els logos ben organitzats -->
-    <header class="logos-header">
-        <img src="logo_eseiaat_blanc.png" class="main-logo" alt="Logo ESEIAAT">
-        <div style="display: flex; gap: 10px;">
-            <img src="logo_eic_negre.jpg" class="sponsor-logo" alt="Sponsor 1">
-            <img src="logo_torrella.png" class="sponsor-logo" alt="Sponsor 2">
-        </div>
-    </header>
+<img src="logo_eseiaat_blanc.png" class="main-logo" alt="Logo">
+<img src="logo_eic_negre.jpg" class="sponsor-logo-left" alt="Sponsor Esquerra">
+<img src="logo_torrella.png" class="sponsor-logo-right" alt="Sponsor Dreta">
 
-    <h1>🏆 Classificació<br>Inter-Enginy Challenge 2026</h1>
+<h1>🏆 Classificació Inter-Enginy Challenge 2026</h1>
 
-    <div class="tournament-container">
+<div class="tournament-bracket">
 
-        <!-- GRUP A -->
-        <div class="stage">
-            <div class="stage-title">Grup A</div>
-            <div class="matchup">
-                <div class="match-badge">Partit 1</div>
-                <div class="team">Equip 1</div>
-                <div class="team">Equip 2</div>
-            </div>
-            <div class="matchup">
-                <div class="match-badge">Partit 2</div>
-                <div class="team">Equip 3</div>
-                <div class="team">Equip 4</div>
-            </div>
+    <div class="round">
+        <div class="matchup">
+            <div class="match-badge">Partit 1</div>
+            <div class="team double-team"></div>
+            <div class="team double-team"></div>
         </div>
 
-        <!-- GRUP B -->
-        <div class="stage">
-            <div class="stage-title">Grup B</div>
-            <div class="matchup">
-                <div class="match-badge">Partit 3</div>
-                <div class="team">Equip 5</div>
-                <div class="team">Equip 6</div>
-            </div>
-            <div class="matchup">
-                <div class="match-badge">Partit 4</div>
-                <div class="team">Equip 7</div>
-                <div class="team">Equip 8</div>
+        <div class="matchup">
+            <div class="match-badge">Partit 2</div>
+            <div class="team double-team"></div>
+            <div class="team double-team"></div>
+        </div>
+    </div>
+
+    <div class="round2">
+        <div class="round-title" style="font-size:2rem;">Grup A</div>
+        <div class="matchup1">
+            <div class="team pending double-team"></div>
+            <div class="team pending double-team"></div>
+        </div>
+    </div>
+
+    <div class="center-column">
+        <div>
+            <div class="round-title" style="font-size:1.5rem; color:#ffffff;">Classificació per la Final</div>
+            <div class="matchup final-match">
+                <div class="team pending double-team"></div>
+                <div class="team pending double-team"></div>
             </div>
         </div>
 
-        <!-- SEMIFINALS -->
-        <div class="stage">
-            <div class="stage-title" style="color: white;">Semifinals</div>
-            <div class="matchup">
-                <div class="match-badge">Semi 1 (Grup A)</div>
-                <div class="team pending">Guanyador P1</div>
-                <div class="team pending">Guanyador P2</div>
-            </div>
-            <div class="matchup">
-                <div class="match-badge">Semi 2 (Grup B)</div>
-                <div class="team pending">Guanyador P3</div>
-                <div class="team pending">Guanyador P4</div>
+        <div>
+            <div class="round-title grand-title" style="font-size:2.2rem;">GRAN FINAL!</div>
+            <div class="matchup final-match grand-final">
+                <div class="team pending single-team" contenteditable="true" spellcheck="false">Membre 1</div>
+                <div class="team pending single-team" contenteditable="true" spellcheck="false">Membre 2</div>
             </div>
         </div>
 
-        <!-- FINAL -->
-        <div class="stage finals">
-            <div class="stage-title">Classificació</div>
-            <div class="matchup">
-                <div class="match-badge">Accés a la Final</div>
-                <div class="team pending">Finalista 1</div>
-                <div class="team pending">Finalista 2</div>
-            </div>
-        </div>
-
-        <!-- GRAN FINAL -->
-        <div class="stage grand-final">
-            <div class="stage-title" style="font-size: 2rem;">GRAN FINAL!</div>
-            <div class="matchup">
-                <div class="match-badge">El combat decisiu</div>
-                <div class="team pending">Membre 1</div>
-                <div class="team pending">Membre 2</div>
-            </div>
-        </div>
-
-        <!-- RESULTATS -->
-        <div class="stage">
-            <div class="stage-title" style="color: white;">Podi</div>
-            <div class="results">
-                <div class="champion">🥇 Primer premi: Pendent</div>
-                <div class="champion" style="background: #e0e0e0;">🥈 Segon premi: Pendent</div>
+        <div>
+            <div class="round-title grand-title" style="font-size:2rem; color:#ffffff;">Resultat Final</div>
+            <div class="result-container">
+                <div class="team champion single-team" style="color: #ffcc00" contenteditable="true" spellcheck="false">Primer premi: Guanyador 1</div>
+                <div class="team champion single-team" style="color: #ffcc00" contenteditable="true" spellcheck="false">Segon premi: Guanyador 2</div>
             </div>
         </div>
 
     </div>
+
+    <div class="round2">
+        <div class="round-title" style="font-size:2rem;">Grup B</div>
+        <div class="matchup1">
+            <div class="team pending double-team"></div>
+            <div class="team pending double-team"></div>
+        </div>
+    </div>
+
+    <div class="round">
+        <div class="matchup">
+            <div class="match-badge">Partit 3</div>
+            <div class="team double-team"></div>
+            <div class="team double-team"></div>
+        </div>
+
+        <div class="matchup">
+            <div class="match-badge">Partit 4</div>
+            <div class="team double-team"></div>
+            <div class="team double-team"></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const llistaEquips = [
+        "FWHM", "Wallahi Tech", "θrdεn rαmθνιcα", "HO HAURIES DE SABER",
+        "Polinomi de McLovin", "Patitos del parque", "Los Salsita", 
+        "Los golden boys", "Los ingenebrios", "Tecnosacerdotes", 
+        "Al Palo x1", "Al Palo x2"
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Generem les opcions dels equips
+        let optionsHTML = '<option value="">- Equip -</option>';
+        llistaEquips.forEach(eq => {
+            optionsHTML += `<option value="${eq}">${eq}</option>`;
+        });
+
+        // Omplim tots els divs que tinguin la classe "double-team" amb els dos desplegables
+        const doubleTeams = document.querySelectorAll('.double-team');
+        doubleTeams.forEach(box => {
+            box.innerHTML = `
+                <select class="team-sel">${optionsHTML}</select>
+                <span class="plus">+</span>
+                <select class="team-sel">${optionsHTML}</select>
+            `;
+
+            // Lògica perquè el color "pendent" desaparegui si es tria un equip
+            const selects = box.querySelectorAll('select');
+            selects.forEach(sel => {
+                sel.addEventListener('change', () => {
+                    if (selects[0].value !== "" || selects[1].value !== "") {
+                        box.classList.remove('pending');
+                    } else {
+                        box.classList.add('pending');
+                    }
+                });
+            });
+        });
+
+        // Lògica per a la GRAN FINAL i RESULTAT (text editable lliure)
+        const singleTeams = document.querySelectorAll('.single-team.pending');
+        singleTeams.forEach(box => {
+            box.addEventListener('input', () => {
+                box.classList.remove('pending');
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
